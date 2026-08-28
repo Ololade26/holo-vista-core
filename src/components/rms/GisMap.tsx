@@ -74,7 +74,7 @@ export function GisMap({
           strokeWidth="0.25"
         />
         {SITES.slice(0, 8).map((s, i) => {
-          const next = SITES[(i + 3) % SITES.length];
+          const next = SITES[(i + 3) % SITES.length]!;
           return (
             <line
               key={s.id}
