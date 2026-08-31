@@ -127,8 +127,8 @@ export function CommandCenter({ className }: { className?: string }) {
       {/* top bar */}
       <div className="relative flex items-center justify-between gap-3 border-b border-hairline bg-surface-2/40 px-3 py-2.5 sm:px-4">
         <div className="flex min-w-0 items-center gap-2.5">
-          <span className="grid size-5 place-items-center rounded-[4px] bg-primary/15 ring-1 ring-primary/25">
-            <Activity className="size-3 text-primary" />
+          <span className="group grid size-5 place-items-center rounded-[4px] bg-primary/15 ring-1 ring-primary/25">
+            <BrandMark className="size-3.5 text-primary" />
           </span>
           <span className="truncate font-display text-[11px] font-semibold tracking-tight sm:text-xs">
             RMS360 <span className="text-primary">COMMAND CENTER</span>
