@@ -145,7 +145,7 @@ export function Hero() {
             </Reveal>
           </div>
 
-          <Reveal delay={220} className="lg:-mr-6 xl:-mr-16">
+          <Reveal delay={220} className="lg:-mr-2 xl:-mr-6">
             <div className="animate-float">
               <CommandCenter />
             </div>
