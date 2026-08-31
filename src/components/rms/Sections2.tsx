@@ -208,9 +208,9 @@ export function Footer() {
       <div className="container-rms py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)]">
           <div>
-            <a href="#top" className="group flex items-center gap-2.5" aria-label="RMS360 home">
-              <span className="grid size-8 place-items-center rounded-sm border border-primary/40 bg-primary/10 transition-colors duration-300 group-hover:border-primary/70 group-hover:bg-primary/15">
-                <BrandMark className="size-4.5 text-primary transition-transform duration-300 group-hover:scale-110" />
+            <a href="#top" className="flex items-center gap-2.5" aria-label="RMS360 home">
+              <span className="grid size-8 place-items-center rounded-sm border border-primary/40 bg-primary/10">
+                <Radio className="size-3.5 text-primary" />
               </span>
               <span className="font-display text-lg leading-none font-semibold tracking-tight">
                 RMS<span className="text-primary">360</span>
