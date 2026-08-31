@@ -87,7 +87,7 @@ export function SectionHeading({
 }
 
 const ctaBase =
-  "group inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "group inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-medium tracking-tight transition-all duration-300 will-change-transform active:translate-y-0 active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 export function CtaPrimary({
   children,
