@@ -1,28 +1,53 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Dashboard } from "./Dashboard";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BrainCircuit,
+  Camera,
+  Fuel,
+  Gauge,
+  Boxes,
+  ShieldCheck,
+  Thermometer,
+  Zap,
+} from "lucide-react";
+import { CommandCenter } from "./CommandCenter";
 import { CtaGhost, CtaPrimary, Reveal } from "./primitives";
+
+const capabilities = [
+  { label: "Power", icon: Zap },
+  { label: "Fuel", icon: Fuel },
+  { label: "Energy", icon: Gauge },
+  { label: "Environment", icon: Thermometer },
+  { label: "Security", icon: ShieldCheck },
+  { label: "Assets", icon: Boxes },
+  { label: "CCTV", icon: Camera },
+  { label: "AI Analytics", icon: BrainCircuit },
+];
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section id="top" className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
+      <div aria-hidden className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       <div
         aria-hidden
-        className="absolute inset-0"
-        style={{ background: "var(--gradient-hero)" }}
+        className="grid-bg absolute inset-0 opacity-50 [mask-image:radial-gradient(80%_60%_at_50%_20%,black,transparent)]"
       />
+      {/* soft radial lighting behind the command centre */}
       <div
         aria-hidden
-        className="grid-bg absolute inset-0 opacity-70 [mask-image:radial-gradient(80%_60%_at_50%_20%,black,transparent)]"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(45% 45% at 76% 42%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 70%)",
+        }}
       />
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-40"
-        style={{
-          background: "linear-gradient(to bottom, transparent, var(--background))",
-        }}
+        style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}
       />
 
-      {/* connection lines between content and dashboard */}
+      {/* faint telemetry / network lines */}
       <svg
         aria-hidden
         className="absolute inset-0 hidden size-full lg:block"
@@ -38,42 +63,71 @@ export function Hero() {
             key={d}
             d={d}
             fill="none"
-            stroke="color-mix(in oklab, var(--primary) 30%, transparent)"
-            strokeWidth="0.12"
-            strokeDasharray="1.4 2.4"
+            stroke="color-mix(in oklab, var(--primary) 24%, transparent)"
+            strokeWidth="0.1"
+            strokeDasharray="1.4 2.6"
             className="animate-dash"
             style={{ animationDelay: `${i * 400}ms` }}
           />
         ))}
       </svg>
 
+      {/* ambient data points */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
+        {[
+          { l: "12%", t: "26%", d: 0 },
+          { l: "22%", t: "68%", d: 700 },
+          { l: "38%", t: "18%", d: 1400 },
+          { l: "58%", t: "82%", d: 2100 },
+          { l: "88%", t: "34%", d: 2800 },
+          { l: "72%", t: "12%", d: 3500 },
+        ].map((p) => (
+          <span
+            key={`${p.l}-${p.t}`}
+            className="absolute size-1 rounded-full bg-primary/50"
+            style={{
+              left: p.l,
+              top: p.t,
+              animation: `rms-blink 5s ease-in-out ${p.d}ms infinite`,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="container-rms relative">
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
           <div className="max-w-2xl">
             <Reveal>
-              <div className="inline-flex items-center gap-3 rounded-full border border-border bg-surface/50 px-3 py-1.5 backdrop-blur">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface/50 px-3 py-1.5 backdrop-blur">
                 <span className="relative flex size-1.5">
                   <span className="size-1.5 rounded-full bg-primary" />
                   <span className="animate-pulse-ring absolute inset-0 rounded-full bg-primary" />
                 </span>
-                <span className="eyebrow">Intelligent Remote Monitoring</span>
+                <span className="eyebrow text-[10px] sm:text-[11px]">
+                  RMS360 Platform — Live Infrastructure Intelligence
+                </span>
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="mt-7 text-4xl leading-[1.03] font-semibold text-balance sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
-                Your Infrastructure.
-                <span className="mt-2 block text-gradient">
-                  Connected. Visible. Intelligent.
+              <h1 className="mt-7 font-display leading-[0.98] font-semibold tracking-tight text-balance">
+                <span className="block text-[2.6rem] text-gradient sm:text-6xl lg:text-[4.25rem]">
+                  SEE EVERYTHING.
+                </span>
+                <span className="mt-1.5 block text-3xl text-foreground/90 sm:text-4xl lg:text-5xl">
+                  KNOW EVERYTHING.
+                </span>
+                <span className="mt-1.5 block text-3xl text-foreground/70 sm:text-4xl lg:text-5xl">
+                  CONTROL EVERYTHING.
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                RMS360 gives operations teams real-time visibility across distributed assets and
-                sites—helping them monitor, analyse, detect problems and take action before they
-                become business-critical incidents.
+                RMS360 is an intelligent remote monitoring and infrastructure management platform
+                that gives operations teams a single real-time view of distributed critical
+                infrastructure — from site health and energy to security, assets and alarms.
               </p>
             </Reveal>
 
@@ -89,20 +143,33 @@ export function Hero() {
                 </CtaGhost>
               </div>
             </Reveal>
-
-            <Reveal delay={400}>
-              <p className="mt-10 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.14em] text-muted-foreground/80 uppercase">
-                Power · Fuel · Energy · Environment · Security · Assets · CCTV
-              </p>
-            </Reveal>
           </div>
 
-          <Reveal delay={220} className="lg:-mr-10 xl:-mr-20">
+          <Reveal delay={220} className="lg:-mr-2 xl:-mr-6">
             <div className="animate-float">
-              <Dashboard />
+              <CommandCenter />
             </div>
           </Reveal>
         </div>
+
+        {/* capability strip */}
+        <Reveal delay={160}>
+          <div className="mt-14 border-t border-hairline pt-6 md:mt-20">
+            <ul className="flex flex-wrap items-center gap-x-2 gap-y-2 sm:gap-x-3">
+              {capabilities.map(({ label, icon: Icon }) => (
+                <li
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface/35 px-3 py-1.5 transition-colors duration-300 hover:border-primary/35 hover:bg-surface-2/50"
+                >
+                  <Icon className="size-3.5 text-primary/70" />
+                  <span className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+                    {label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
