@@ -13,7 +13,6 @@ import {
   Camera,
   Cpu,
   DoorOpen,
-  Droplets,
   Eye,
   Fuel,
   Gauge,
@@ -250,7 +249,7 @@ const capabilities: { n: string; icon: LucideIcon; title: string; copy: string }
 const strip: { icon: LucideIcon; label: string; tone: Tone }[] = [
   { icon: Gauge, label: "Real-time telemetry", tone: "healthy" },
   { icon: LineChart, label: "Predictive intelligence", tone: "info" },
-  { icon: Droplets, label: "Centralized operations", tone: "healthy" },
+  { icon: Server, label: "Centralized operations", tone: "healthy" },
   { icon: SlidersHorizontal, label: "Remote control", tone: "info" },
 ];
 
