@@ -41,7 +41,7 @@ const domains: { icon: LucideIcon; label: string; tone: Tone; angle: number }[] 
   { icon: Radio, label: "Network / Comms", tone: "info", angle: -135 },
 ];
 
-const RADIUS = 40; // % of container half-size
+const RADIUS = 34; // % of container half-size
 
 function polar(angle: number) {
   const rad = (angle * Math.PI) / 180;
@@ -87,7 +87,7 @@ function DomainNode({
 
 function CentralNode() {
   return (
-    <div className="panel relative flex flex-col items-center justify-center gap-1 rounded-lg px-6 py-6 text-center shadow-[var(--shadow-glow)]">
+    <div className="panel relative flex flex-col items-center justify-center gap-1 rounded-lg px-4 py-6 text-center shadow-[var(--shadow-glow)]">
       <span
         aria-hidden
         className="animate-sweep absolute inset-0 rounded-lg opacity-25"
@@ -167,7 +167,7 @@ function Topology() {
 
         <div
           className={cn(
-            "reveal absolute top-1/2 left-1/2 w-[42%] -translate-x-1/2 -translate-y-1/2",
+            "reveal absolute top-1/2 left-1/2 w-[34%] -translate-x-1/2 -translate-y-1/2",
             inView && "is-revealed",
           )}
         >
@@ -180,7 +180,7 @@ function Topology() {
             <div
               key={d.label}
               className={cn(
-                "reveal absolute w-[38%] -translate-x-1/2 -translate-y-1/2",
+                "reveal absolute w-[30%] -translate-x-1/2 -translate-y-1/2",
                 inView && "is-revealed",
               )}
               style={{
