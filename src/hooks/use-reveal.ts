@@ -12,16 +12,19 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.
       setInView(true);
       return;
     }
+    // Elements taller than the viewport can never reach a high ratio, so we
+    // watch a small threshold and also accept "mostly visible" panels.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) {
+          const tallerThanViewport = entry.boundingClientRect.height > window.innerHeight * 0.8;
+          if (entry.isIntersecting && (tallerThanViewport || entry.intersectionRatio >= threshold)) {
             setInView(true);
             observer.disconnect();
           }
         }
       },
-      { threshold, rootMargin: "0px 0px -8% 0px" },
+      { threshold: [0, 0.05, Math.min(threshold, 0.99)], rootMargin: "0px 0px -6% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
