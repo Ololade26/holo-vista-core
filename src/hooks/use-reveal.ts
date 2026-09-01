@@ -44,10 +44,15 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.
 
 /** Counts up to `target` once `active` turns true. */
 export function useCountUp(target: number, active: boolean, duration = 1600) {
-  const [value, setValue] = useState(0);
+  // Never render a bare 0: idle state shows the real figure, the animation
+  // simply sweeps up to it once the element is in view.
+  const [value, setValue] = useState(target);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      setValue(target);
+      return;
+    }
     if (
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
