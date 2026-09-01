@@ -27,7 +27,16 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.
       { threshold: [0, 0.05, Math.min(threshold, 0.99)], rootMargin: "0px 0px -6% 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    // Safety net: some embedded/background contexts never fire intersections,
+    // which would leave counters showing zeros forever.
+    const fallback = window.setTimeout(() => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) setInView(true);
+    }, 1200);
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, [threshold]);
 
   return { ref, inView };
