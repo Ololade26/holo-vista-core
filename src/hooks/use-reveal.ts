@@ -39,6 +39,13 @@ export function useCountUp(target: number, active: boolean, duration = 1600) {
 
   useEffect(() => {
     if (!active) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setValue(target);
+      return;
+    }
     let frame = 0;
     const start = performance.now();
     const tick = (now: number) => {
