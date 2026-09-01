@@ -12,19 +12,31 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.
       setInView(true);
       return;
     }
+    // Elements taller than the viewport can never reach a high ratio, so we
+    // watch a small threshold and also accept "mostly visible" panels.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) {
+          const tallerThanViewport = entry.boundingClientRect.height > window.innerHeight * 0.8;
+          if (entry.isIntersecting && (tallerThanViewport || entry.intersectionRatio >= threshold)) {
             setInView(true);
             observer.disconnect();
           }
         }
       },
-      { threshold, rootMargin: "0px 0px -8% 0px" },
+      { threshold: [0, 0.05, Math.min(threshold, 0.99)], rootMargin: "0px 0px -6% 0px" },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    // Safety net: some embedded/background contexts never fire intersections,
+    // which would leave counters showing zeros forever.
+    const fallback = window.setTimeout(() => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) setInView(true);
+    }, 1200);
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, [threshold]);
 
   return { ref, inView };
@@ -32,10 +44,22 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.
 
 /** Counts up to `target` once `active` turns true. */
 export function useCountUp(target: number, active: boolean, duration = 1600) {
-  const [value, setValue] = useState(0);
+  // Never render a bare 0: idle state shows the real figure, the animation
+  // simply sweeps up to it once the element is in view.
+  const [value, setValue] = useState(target);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      setValue(target);
+      return;
+    }
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setValue(target);
+      return;
+    }
     let frame = 0;
     const start = performance.now();
     const tick = (now: number) => {
