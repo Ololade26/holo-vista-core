@@ -3,8 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/rms/Nav";
 import { Hero } from "@/components/rms/Hero";
 import { Stats } from "@/components/rms/Stats";
+import { WhatIsRms } from "@/components/rms/WhatIsRms";
 import {
-  About,
   Solutions,
   Features,
   Alerts,
@@ -47,7 +47,7 @@ function Index() {
       <main>
         <Hero />
         <Stats />
-        <About />
+        <WhatIsRms />
         <Solutions />
         <Features />
         <Alerts />
