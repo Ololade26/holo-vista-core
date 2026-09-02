@@ -200,6 +200,11 @@
     line-height: 1.65;
   }
 
+  /* small technical labels (font-mono utility now maps to Inter) */
+  .font-mono {
+    font-weight: 500;
+  }
+
   ::selection {
     background: color-mix(in oklab, var(--primary) 35%, transparent);
   }
