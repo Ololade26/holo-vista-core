@@ -53,7 +53,7 @@ export function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="relative rounded-sm px-2.5 py-2 text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+              className="relative rounded-sm px-2.5 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:font-semibold hover:text-foreground"
             >
               {l.label}
             </a>
@@ -106,7 +106,7 @@ export function Nav() {
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="border-b border-border/60 py-3 text-sm text-muted-foreground transition-colors hover:text-primary"
+              className="border-b border-border/60 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               style={{ transitionDelay: `${i * 20}ms` }}
             >
               {l.label}
