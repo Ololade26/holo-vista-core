@@ -53,7 +53,7 @@ export function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="relative rounded-sm px-2.5 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:font-semibold hover:text-foreground"
+              className="relative rounded-sm px-2.5 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </a>
