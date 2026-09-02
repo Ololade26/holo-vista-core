@@ -19,8 +19,10 @@
   --radius-4xl: calc(var(--radius) + 16px);
 
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* small technical labels / metadata use Inter with wider tracking */
+  --font-mono: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-numeric: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -171,8 +173,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 400;
+    font-feature-settings: "cv11", "ss01";
+    letter-spacing: -0.005em;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -180,7 +187,22 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    font-weight: 600;
     letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    line-height: 1.05;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  /* small technical labels (font-mono utility now maps to Inter) */
+  .font-mono {
+    font-weight: 500;
   }
 
   ::selection {
@@ -234,11 +256,20 @@
 }
 
 @utility eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.6875rem;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--primary);
+}
+
+/* precise operational numbers */
+@utility numeric {
+  font-family: var(--font-numeric);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 /* ---------- reveal on scroll ---------- */
