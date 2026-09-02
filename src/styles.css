@@ -173,8 +173,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 400;
+    font-feature-settings: "cv11", "ss01";
+    letter-spacing: -0.005em;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -182,7 +187,17 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    font-weight: 600;
     letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    line-height: 1.05;
+  }
+
+  p {
+    line-height: 1.65;
   }
 
   ::selection {
