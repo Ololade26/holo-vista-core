@@ -61,11 +61,12 @@ export function useCountUp(target: number, active: boolean, duration = 1600) {
       return;
     }
     let frame = 0;
+    const from = Math.round(target * 0.4);
     const start = performance.now();
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      setValue(Math.round(target * eased));
+      setValue(Math.round(from + (target - from) * eased));
       if (p < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
