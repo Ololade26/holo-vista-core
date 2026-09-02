@@ -110,17 +110,14 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="mt-7 flex flex-col gap-2 font-display leading-[1.05] font-bold tracking-[-0.03em] sm:gap-2.5 lg:gap-3">
-                <span className="block text-[2.1rem] whitespace-nowrap text-gradient sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
-                  SEE EVERYTHING.
-                </span>
-                <span className="block text-[1.6rem] font-semibold whitespace-nowrap text-foreground/90 sm:text-4xl lg:text-[2.6rem] xl:text-5xl">
-                  KNOW EVERYTHING.
-                </span>
-                <span className="block text-[1.6rem] font-semibold whitespace-nowrap text-foreground/70 sm:text-4xl lg:text-[2.6rem] xl:text-5xl">
+              <h1 className="mt-7 flex flex-col gap-1.5 font-display text-[1.5rem] leading-[1.1] font-bold tracking-[-0.03em] sm:gap-2 sm:text-[2.2rem] lg:text-[2.6rem] xl:text-[3rem]">
+                <span className="block whitespace-nowrap text-gradient">SEE EVERYTHING.</span>
+                <span className="block whitespace-nowrap text-foreground/90">KNOW EVERYTHING.</span>
+                <span className="block whitespace-nowrap text-foreground/75">
                   CONTROL EVERYTHING.
                 </span>
               </h1>
+
             </Reveal>
 
             <Reveal delay={200}>
