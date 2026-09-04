@@ -10,6 +10,8 @@ import {
   Fingerprint,
   FileLock2,
   KeyRound,
+  Mail,
+  Phone,
   Radio,
   ServerCog,
   ShieldCheck,
@@ -199,6 +201,10 @@ const footerNav = [
       ["Security", "#security"],
       ["Request a demo", "#demo"],
     ],
+  },
+  {
+    title: "Service Enquiries",
+    contact: true,
   },
 ] as const;
 
