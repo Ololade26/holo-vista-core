@@ -202,10 +202,6 @@ const footerNav = [
       ["Request a demo", "#demo"],
     ],
   },
-  {
-    title: "Service Enquiries",
-    contact: true,
-  },
 ] as const;
 
 export function Footer() {
