@@ -224,7 +224,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-3">
             {footerNav.map((col) => (
               <div key={col.title}>
                 <h3 className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
@@ -244,36 +244,6 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-            <div>
-              <h3 className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-                Service Enquiries
-              </h3>
-              <p className="mt-4 max-w-[16rem] text-sm leading-relaxed text-muted-foreground">
-                Need RMS360 services or assistance?
-              </p>
-              <ul className="mt-3 grid gap-2.5">
-                <li>
-                  <a
-                    href="tel:+2348035106187"
-                    className="group inline-flex items-center gap-2 text-sm text-foreground transition-colors hover:text-primary"
-                    aria-label="Call +234 803 510 6187"
-                  >
-                    <Phone className="size-4 text-primary transition-colors group-hover:text-foreground" />
-                    <span className="numeric">+234 803 510 6187</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:shadebtechlimited@gmail.com"
-                    className="group inline-flex flex-wrap items-center gap-2 text-sm text-foreground transition-colors hover:text-primary break-words"
-                    aria-label="Email shadebtechlimited@gmail.com"
-                  >
-                    <Mail className="size-4 shrink-0 text-primary transition-colors group-hover:text-foreground" />
-                    shadebtechlimited@gmail.com
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
 
