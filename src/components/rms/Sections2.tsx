@@ -247,6 +247,35 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="mt-12 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+              Service Enquiries
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Need RMS360 services or assistance?
+            </p>
+          </div>
+          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              href="tel:+2348035106187"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
+              aria-label="Call +234 803 510 6187"
+            >
+              <Phone className="size-4 text-primary transition-colors group-hover:text-foreground" />
+              <span className="numeric">+234 803 510 6187</span>
+            </a>
+            <a
+              href="mailto:shadebtechlimited@gmail.com"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary break-words"
+              aria-label="Email shadebtechlimited@gmail.com"
+            >
+              <Mail className="size-4 shrink-0 text-primary transition-colors group-hover:text-foreground" />
+              shadebtechlimited@gmail.com
+            </a>
+          </div>
+        </div>
+
         <div
           className={cn(
             "mt-14 flex flex-col gap-3 border-t border-border pt-6 font-mono text-[10px] tracking-[0.12em] text-muted-foreground uppercase sm:flex-row sm:items-center sm:justify-between",
