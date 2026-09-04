@@ -265,10 +265,10 @@ export function Footer() {
                 <li>
                   <a
                     href="mailto:shadebtechlimited@gmail.com"
-                    className="group inline-flex items-center gap-2 text-sm text-foreground transition-colors hover:text-primary break-all"
+                    className="group inline-flex flex-wrap items-center gap-2 text-sm text-foreground transition-colors hover:text-primary break-words"
                     aria-label="Email shadebtechlimited@gmail.com"
                   >
-                    <Mail className="size-4 text-primary transition-colors group-hover:text-foreground" />
+                    <Mail className="size-4 shrink-0 text-primary transition-colors group-hover:text-foreground" />
                     shadebtechlimited@gmail.com
                   </a>
                 </li>
