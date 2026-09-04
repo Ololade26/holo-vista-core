@@ -164,6 +164,35 @@ export function FinalCta() {
             <CtaGhost href="#platform">Talk to our team</CtaGhost>
           </div>
         </Reveal>
+
+        <Reveal delay={340}>
+          <div className="mx-auto mt-14 max-w-xl rounded-lg border border-border/60 bg-background/60 p-6 backdrop-blur-sm sm:p-8">
+            <h3 className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+              Service Enquiries
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Need RMS360 services or assistance?
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+              <a
+                href="tel:+2348035106187"
+                className="group inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                aria-label="Call +234 803 510 6187"
+              >
+                <Phone className="size-4 text-primary transition-colors group-hover:text-foreground" />
+                <span className="numeric">+234 803 510 6187</span>
+              </a>
+              <a
+                href="mailto:shadebtechlimited@gmail.com"
+                className="group inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary break-words"
+                aria-label="Email shadebtechlimited@gmail.com"
+              >
+                <Mail className="size-4 shrink-0 text-primary transition-colors group-hover:text-foreground" />
+                shadebtechlimited@gmail.com
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
