@@ -95,25 +95,25 @@ export function Hero() {
       </div>
 
       <div className="container-rms relative">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
-          <div className="max-w-2xl">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+          <div className="min-w-0 max-w-2xl">
             <Reveal>
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface/50 px-3 py-1.5 backdrop-blur">
+              <div className="inline-flex max-w-full items-center gap-2.5 rounded-full border border-hairline bg-surface/50 px-3 py-1.5 backdrop-blur">
                 <span className="relative flex size-1.5">
                   <span className="size-1.5 rounded-full bg-primary" />
                   <span className="animate-pulse-ring absolute inset-0 rounded-full bg-primary" />
                 </span>
-                <span className="eyebrow text-[10px] sm:text-[11px]">
+                <span className="min-w-0 break-words eyebrow text-[10px] sm:text-[11px]">
                   RMS360 Platform — Live Infrastructure Intelligence
                 </span>
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="mt-7 flex flex-col gap-1.5 font-display text-[1.5rem] leading-[1.1] font-bold tracking-[-0.03em] sm:gap-2 sm:text-[2.2rem] lg:text-[2.6rem] xl:text-[3rem]">
-                <span className="block whitespace-nowrap text-gradient">SEE EVERYTHING.</span>
-                <span className="block whitespace-nowrap text-foreground/90">KNOW EVERYTHING.</span>
-                <span className="block whitespace-nowrap text-foreground/75">
+              <h1 className="mt-7 flex max-w-full flex-col gap-1.5 font-display text-[1.5rem] leading-[1.1] font-bold tracking-[-0.03em] sm:gap-2 sm:text-[2.2rem] lg:text-[2.6rem] xl:text-[3rem]">
+                <span className="block min-w-0 sm:whitespace-nowrap text-gradient">SEE EVERYTHING.</span>
+                <span className="block min-w-0 sm:whitespace-nowrap text-foreground/90">KNOW EVERYTHING.</span>
+                <span className="block min-w-0 sm:whitespace-nowrap text-foreground/75">
                   CONTROL EVERYTHING.
                 </span>
               </h1>

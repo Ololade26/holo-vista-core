@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Nav } from "@/components/rms/Nav";
 import { Hero } from "@/components/rms/Hero";
-import { Stats } from "@/components/rms/Stats";
+import { DashboardConsole } from "@/components/rms/DashboardConsole";
+import { SitesInfrastructure } from "@/components/rms/SitesInfrastructure";
+import { AlertsIncidentManagement } from "@/components/rms/AlertsIncidentManagement";
+import { AiAnalytics } from "@/components/rms/AiAnalytics";
 import { WhatIsRms } from "@/components/rms/WhatIsRms";
 import {
   Solutions,
@@ -46,7 +49,10 @@ function Index() {
       <Nav />
       <main>
         <Hero />
-        <Stats />
+        <DashboardConsole />
+        <SitesInfrastructure />
+        <AlertsIncidentManagement />
+        <AiAnalytics />
         <WhatIsRms />
         <Solutions />
         <Features />
