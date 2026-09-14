@@ -40,15 +40,13 @@ export function Nav() {
     >
       <div className="container-rms flex h-16 items-center justify-between gap-6 md:h-18">
         <a href="#top" className="group flex items-center" aria-label="RMS360 home">
-          <span className="flex h-10 w-12 items-center justify-center rounded-lg bg-white">
-            <img
-              src={logoAsset.url}
-              alt="RMS360"
-              className="h-7 w-auto"
-              width={48}
-              height={28}
-            />
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="RMS360"
+            className="h-10 w-auto rounded-lg"
+            width={160}
+            height={100}
+          />
         </a>
 
         <nav className="hidden items-center gap-1 xl:flex">
