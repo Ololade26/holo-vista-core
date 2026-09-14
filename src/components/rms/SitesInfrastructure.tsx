@@ -21,7 +21,7 @@ import {
 
 const healthOptions: Array<"All" | SiteHealth> = ["All", "Healthy", "Warning", "Critical", "Offline", "Maintenance"];
 const typeOptions: Array<"All" | InfrastructureType> = ["All", "Telecom tower", "Power substation", "Fuel depot", "Water treatment"];
-const locations = ["All", ...new Set(demoInfrastructureSites.map((site) => site.location.split(", ")[1]))];
+const locations = ["All", ...new Set(demoInfrastructureSites.map((site) => site.location.split(", ")[1]).filter(Boolean))];
 
 const healthTone: Record<SiteHealth, "healthy" | "major" | "critical" | "info"> = {
   Healthy: "healthy",
@@ -44,6 +44,7 @@ const severityMap: Record<string, Severity> = {
   Major: "Major",
   Minor: "Minor",
   Warning: "Warning",
+  Information: "Information",
 };
 
 function Label({ children }: { children: ReactNode }) {
