@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useScrollY } from "@/hooks/use-reveal";
 import { Menu, X, ArrowRight } from "lucide-react";
+import logoAsset from "@/assets/rms360-logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#top" },
@@ -39,9 +40,14 @@ export function Nav() {
     >
       <div className="container-rms flex h-16 items-center justify-between gap-6 md:h-18">
         <a href="#top" className="group flex items-center gap-2.5" aria-label="RMS360 home">
-          <span className="relative grid size-8 place-items-center rounded-sm border border-primary/40 bg-primary/10">
-            <span className="size-1.5 rounded-full bg-primary" />
-            <span className="animate-pulse-ring absolute inset-0 m-auto size-1.5 rounded-full bg-primary" />
+          <span className="flex h-9 w-10 items-center justify-center rounded-lg bg-white">
+            <img
+              src={logoAsset.url}
+              alt=""
+              className="h-6 w-auto"
+              width={40}
+              height={24}
+            />
           </span>
           <span className="font-display text-lg leading-none font-semibold tracking-tight">
             RMS<span className="text-primary">360</span>
