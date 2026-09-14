@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useScrollY } from "@/hooks/use-reveal";
 import { Menu, X, ArrowRight } from "lucide-react";
+import logoAsset from "@/assets/rms360-logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#top" },
