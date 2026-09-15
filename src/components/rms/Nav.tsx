@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useScrollY } from "@/hooks/use-reveal";
 import { Menu, X, ArrowRight } from "lucide-react";
+import logoAsset from "@/assets/rms360-logo.png.asset.json";
 
 const links = [
   { label: "Platform", href: "#platform" },
@@ -34,8 +35,14 @@ export function Nav() {
       )}
     >
       <div className="container-rms flex h-16 items-center justify-between gap-6 md:h-18">
-        <a href="#top" className="group flex items-center gap-2.5" aria-label="RMS360 home">
-          <img src="/rms360-logo.png" alt="RMS360" className="h-9 w-auto max-w-[11rem] object-contain" />
+        <a href="#top" className="group flex items-center" aria-label="RMS360 home">
+          <img
+            src={logoAsset.url}
+            alt="RMS360"
+            className="h-10 w-auto rounded-lg"
+            width={160}
+            height={100}
+          />
         </a>
 
         <nav className="hidden items-center gap-1 xl:flex">

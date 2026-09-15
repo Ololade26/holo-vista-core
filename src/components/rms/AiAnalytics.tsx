@@ -40,12 +40,12 @@ import {
 const ranges: AnalyticsRange[] = ["24 Hours", "7 Days", "30 Days"];
 const anomalySeverities: Array<"All" | AnomalySeverity> = ["All", "Critical", "High", "Medium", "Low"];
 const metricOptions = [
-  { key: "power", label: "Power consumption", unit: "kW index", color: "var(--primary)", domain: [40, 100] },
-  { key: "battery", label: "Battery level", unit: "%", color: "var(--healthy)", domain: [60, 100] },
-  { key: "temperature", label: "Temperature", unit: "C", color: "var(--major)", domain: [20, 50] },
-  { key: "connectivity", label: "Connectivity quality", unit: "%", color: "var(--info)", domain: [70, 100] },
-  { key: "equipment", label: "Equipment performance", unit: "%", color: "var(--accent)", domain: [70, 100] },
-  { key: "signal", label: "Signal strength", unit: "%", color: "var(--primary)", domain: [60, 100] },
+  { key: "power", label: "Power consumption", unit: "kW index", color: "var(--primary)", domain: [40, 100] as [number, number] },
+  { key: "battery", label: "Battery level", unit: "%", color: "var(--healthy)", domain: [60, 100] as [number, number] },
+  { key: "temperature", label: "Temperature", unit: "C", color: "var(--major)", domain: [20, 50] as [number, number] },
+  { key: "connectivity", label: "Connectivity quality", unit: "%", color: "var(--info)", domain: [70, 100] as [number, number] },
+  { key: "equipment", label: "Equipment performance", unit: "%", color: "var(--accent)", domain: [70, 100] as [number, number] },
+  { key: "signal", label: "Signal strength", unit: "%", color: "var(--primary)", domain: [60, 100] as [number, number] },
 ] as const;
 
 type MetricKey = (typeof metricOptions)[number]["key"];

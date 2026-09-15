@@ -21,7 +21,7 @@ import {
 
 const healthOptions: Array<"All" | SiteHealth> = ["All", "Healthy", "Warning", "Critical", "Offline", "Maintenance"];
 const typeOptions: Array<"All" | InfrastructureType> = ["All", "Telecom tower", "Power substation", "Fuel depot", "Water treatment"];
-const locations = ["All", ...new Set(demoInfrastructureSites.map((site) => site.location.split(", ")[1]))];
+const locations = ["All", ...new Set(demoInfrastructureSites.map((site) => site.location.split(", ")[1]).filter((loc): loc is string => !!loc))];
 
 const healthTone: Record<SiteHealth, "healthy" | "major" | "critical" | "info"> = {
   Healthy: "healthy",
@@ -44,6 +44,7 @@ const severityMap: Record<string, Severity> = {
   Major: "Major",
   Minor: "Minor",
   Warning: "Warning",
+  Information: "Information",
 };
 
 function Label({ children }: { children: ReactNode }) {
@@ -64,7 +65,7 @@ function SiteDetail({ site, onClose }: { site: InfrastructureSite; onClose: () =
     <div className="space-y-4 p-4">
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4"><div className="rounded-sm border border-hairline bg-surface/70 p-3"><Label>Connectivity</Label><p className="mt-2 text-xs font-medium text-foreground">{site.connectivity}</p></div><div className="rounded-sm border border-hairline bg-surface/70 p-3"><Label>Power</Label><p className="mt-2 text-xs font-medium text-foreground">{site.power}</p></div><div className="rounded-sm border border-hairline bg-surface/70 p-3"><Label>Equipment</Label><p className="mt-2 text-xs font-medium text-foreground">{site.equipment}</p></div><div className="rounded-sm border border-hairline bg-surface/70 p-3"><Label>Last communication</Label><p className="mt-2 text-xs font-medium text-foreground">{site.lastCommunication}</p></div></div>
       <div><div className="mb-2 flex items-center justify-between"><Label>Key telemetry</Label><span className="font-mono text-[9px] text-muted-foreground">demo readings</span></div><div className="grid grid-cols-2 gap-2">{site.telemetry.map((metric) => <div key={metric.label} className="rounded-sm border border-hairline bg-surface/50 p-3"><Label>{metric.label}</Label><p className="mt-2 font-numeric text-lg font-semibold text-foreground">{metric.value}</p><p className="mt-0.5 text-[10px] text-muted-foreground">{metric.detail}</p></div>)}</div></div>
-      <div><div className="mb-2 flex items-center justify-between"><Label>Recent alerts</Label><span className="font-mono text-[9px] text-muted-foreground">{site.alertCount} total</span></div><div className="divide-y divide-hairline rounded-sm border border-hairline bg-surface/50">{site.alerts.map((alert) => <div key={`${alert.time}-${alert.message}`} className="flex items-start justify-between gap-3 p-3"><div className="flex min-w-0 items-start gap-2"><AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" /><div><p className="text-xs text-foreground">{alert.message}</p><p className="mt-1 font-mono text-[9px] text-muted-foreground">{alert.time} UTC</p></div></div><SeverityBadge level={severityMap[alert.severity]} /></div>)}</div></div>
+      <div><div className="mb-2 flex items-center justify-between"><Label>Recent alerts</Label><span className="font-mono text-[9px] text-muted-foreground">{site.alertCount} total</span></div><div className="divide-y divide-hairline rounded-sm border border-hairline bg-surface/50">{site.alerts.map((alert) => <div key={`${alert.time}-${alert.message}`} className="flex items-start justify-between gap-3 p-3"><div className="flex min-w-0 items-start gap-2"><AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" /><div><p className="text-xs text-foreground">{alert.message}</p><p className="mt-1 font-mono text-[9px] text-muted-foreground">{alert.time} UTC</p></div></div><SeverityBadge level={severityMap[alert.severity] ?? "Information"} /></div>)}</div></div>
       <div><Label>Recent activity</Label><div className="mt-2 space-y-2">{site.activity.map((item) => <div key={`${item.time}-${item.event}`} className="flex gap-3 border-l border-primary/30 pl-3"><div className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" /><div><p className="text-xs text-foreground">{item.event}</p><p className="mt-0.5 text-[10px] text-muted-foreground">{item.time} / {item.detail}</p></div></div>)}</div></div>
       <div className="rounded-sm border border-primary/20 bg-primary/[0.06] p-3 text-xs leading-relaxed text-muted-foreground"><span className="font-semibold text-primary">Demonstration record.</span> Site details and telemetry are fictional local data for evaluating the RMS360 interface. They do not represent live infrastructure.</div>
     </div>
