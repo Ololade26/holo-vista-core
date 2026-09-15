@@ -4,16 +4,12 @@ import { useScrollY } from "@/hooks/use-reveal";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const links = [
-  { label: "Home", href: "#top" },
-  { label: "About RMS360", href: "#about" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Features", href: "#features" },
-  { label: "Industries", href: "#industries" },
-  { label: "How It Works", href: "#how-it-works" },
   { label: "Platform", href: "#platform" },
-  { label: "Hardware", href: "#hardware" },
-  { label: "AI & Analytics", href: "#ai" },
-  { label: "Resources", href: "#resources" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Industries", href: "#industries" },
+  { label: "Security", href: "#security" },
+  { label: "About", href: "#about" },
 ];
 
 export function Nav() {
@@ -39,13 +35,7 @@ export function Nav() {
     >
       <div className="container-rms flex h-16 items-center justify-between gap-6 md:h-18">
         <a href="#top" className="group flex items-center gap-2.5" aria-label="RMS360 home">
-          <span className="relative grid size-8 place-items-center rounded-sm border border-primary/40 bg-primary/10">
-            <span className="size-1.5 rounded-full bg-primary" />
-            <span className="animate-pulse-ring absolute inset-0 m-auto size-1.5 rounded-full bg-primary" />
-          </span>
-          <span className="font-display text-lg leading-none font-semibold tracking-tight">
-            RMS<span className="text-primary">360</span>
-          </span>
+          <img src="/rms360-logo.png" alt="RMS360" className="h-9 w-auto max-w-[11rem] object-contain" />
         </a>
 
         <nav className="hidden items-center gap-1 xl:flex">

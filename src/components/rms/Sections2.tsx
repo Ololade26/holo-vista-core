@@ -1,7 +1,7 @@
+import { useState, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
-import { Reveal, SectionHeading, SectionShell, GridBackdrop, CtaPrimary, CtaGhost } from "./primitives";
+import { Reveal, SectionHeading, SectionShell, GridBackdrop, CtaGhost } from "./primitives";
 import {
-  ArrowRight,
   Banknote,
   Building2,
   CheckCircle2,
@@ -10,27 +10,21 @@ import {
   Fingerprint,
   FileLock2,
   KeyRound,
-  Mail,
-  Phone,
   Radio,
-  ServerCog,
   ShieldCheck,
   Signal,
   Sun,
-  Truck,
 } from "lucide-react";
 
 /* ------------------------------------------------------------- Industries */
 
 const industries = [
-  { icon: Signal, title: "Telecom operators", copy: "Tower and BTS site uptime, energy cost control and vendor SLA enforcement." },
-  { icon: Sun, title: "Energy & renewables", copy: "Solar hybrid, battery and diesel plant performance across dispersed generation." },
-  { icon: Banknote, title: "Banking & ATMs", copy: "Branch and ATM power continuity, environment and physical security." },
-  { icon: Building2, title: "Data centres", copy: "Edge facility power chain, cooling and access monitoring." },
-  { icon: Droplets, title: "Water utilities", copy: "Pump stations, reservoirs and treatment site telemetry." },
-  { icon: Factory, title: "Industrial & manufacturing", copy: "Distributed plant assets, utilities and critical machinery." },
-  { icon: Truck, title: "Logistics & retail", copy: "Depots, cold chain and multi-branch estate monitoring." },
-  { icon: ServerCog, title: "Managed service providers", copy: "Multi-tenant operations with per-client visibility and reporting." },
+  { icon: Signal, title: "Telecommunications", copy: "Monitor tower sites, generators, batteries, fuel systems, power infrastructure and physical security across thousands of locations." },
+  { icon: Sun, title: "Energy & utilities", copy: "Improve visibility across substations, power assets, renewable installations and distributed energy infrastructure." },
+  { icon: Droplets, title: "Oil & gas", copy: "Monitor fuel, equipment, environmental conditions, security and operational parameters across remote facilities." },
+  { icon: Banknote, title: "Solar & renewable energy", copy: "Monitor solar generation, battery systems, inverter performance and energy consumption." },
+  { icon: Building2, title: "Data centres", copy: "Monitor power, cooling, environmental conditions, security and critical infrastructure." },
+  { icon: Factory, title: "Commercial & industrial facilities", copy: "Connect distributed equipment and facility infrastructure to a central monitoring platform." },
 ];
 
 export function Industries() {
@@ -38,9 +32,9 @@ export function Industries() {
     <SectionShell id="industries" className="border-y border-border bg-surface/20">
       <div className="container-rms relative">
         <SectionHeading
-          eyebrow="Who it is for"
-          title="Organizations managing distributed critical infrastructure"
-          copy="Wherever uptime depends on sites nobody can visit every day, RMS360 becomes the operational system of record."
+          eyebrow="Industries"
+          title="Built for critical infrastructure"
+          copy="RMS360 helps teams manage distributed infrastructure across industries where uptime, visibility and fast response matter."
         />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((s, i) => (
@@ -63,10 +57,13 @@ export function Industries() {
 /* --------------------------------------------------------------- Security */
 
 const security = [
-  { icon: KeyRound, title: "Identity & access", copy: "SSO-ready authentication, role-based permissions and least-privilege defaults." },
-  { icon: FileLock2, title: "Data protection", copy: "Encryption in transit and at rest, with tenant isolation across every layer." },
-  { icon: Fingerprint, title: "Auditability", copy: "Immutable logs for every login, configuration change and remote command." },
-  { icon: ShieldCheck, title: "Device trust", copy: "Signed firmware, mutual TLS and unique device identity per controller." },
+  { icon: KeyRound, title: "Role-based access control", copy: "Control access by role and give each user only the permissions their work requires." },
+  { icon: Fingerprint, title: "User authentication", copy: "Authenticate users before they access infrastructure data or operational controls." },
+  { icon: FileLock2, title: "Audit trails", copy: "Keep a traceable record of important operational actions and remote commands." },
+  { icon: ShieldCheck, title: "Secure communications", copy: "Protect communication between field devices, networks and the RMS360 platform." },
+  { icon: KeyRound, title: "Access management", copy: "Manage access to sites, assets, workflows and platform capabilities." },
+  { icon: FileLock2, title: "Data protection", copy: "Treat infrastructure data as critical and protect it across the platform." },
+  { icon: Fingerprint, title: "Event logging", copy: "Make every important operational action traceable through platform event logs." },
 ];
 
 export function Security() {
@@ -102,19 +99,37 @@ export function Security() {
 /* ------------------------------------------------------------- Why RMS360 */
 
 const reasons = [
-  "Unified monitoring across power, fuel, energy, environment, security, assets and CCTV",
-  "Scales from thousands to a hundred thousand sites without re-platforming",
-  "Predictive intelligence that reduces truck rolls and emergency logistics",
-  "Authorized remote control with approval gates and full audit history",
-  "Vendor-neutral integration with existing sensors, controllers and systems",
-  "Operational reporting that stands up to executive and regulatory scrutiny",
+  "Real-time visibility across your infrastructure",
+  "Centralized operations from a single platform",
+  "Faster response to incidents and alarms",
+  "Better decisions supported by operational data",
+  "Reduced operational costs through less waste and inefficiency",
+  "Scalable architecture for individual sites to large distributed networks",
+  "Integrated ecosystem of sensors, meters, controllers, cameras and third-party systems",
 ];
+
+function sendDemoRequestByEmail(event: FormEvent<HTMLFormElement>, onSubmitted?: () => void) {
+  event.preventDefault();
+  const formData = new FormData(event.currentTarget);
+  const fields = [
+    ["Name", formData.get("name")],
+    ["Company", formData.get("company")],
+    ["Email", formData.get("email")],
+    ["Phone", formData.get("phone")],
+    ["Industry", formData.get("industry")],
+    ["Number of Sites", formData.get("sites")],
+    ["Monitoring Requirements", formData.get("requirements")],
+  ];
+  const message = ["Hello, I would like to request a demo of RMS360.", "", ...fields.map(([label, value]) => `${label}: ${value || "Not provided"}`)].join("\n");
+  window.location.href = `mailto:shadebtechlimited@gmail.com?subject=${encodeURIComponent("RMS360 Demo Request")}&body=${encodeURIComponent(message)}`;
+  onSubmitted?.();
+}
 
 export function Why() {
   return (
     <SectionShell id="why" className="border-y border-border bg-surface/20">
       <div className="container-rms relative">
-        <SectionHeading align="center" eyebrow="Why RMS360" title="The operational advantage" />
+        <SectionHeading align="center" eyebrow="Why RMS360?" title="Why organizations choose RMS360" />
         <div className="mx-auto mt-14 grid max-w-4xl gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
           {reasons.map((r, i) => (
             <Reveal key={r} delay={(i % 2) * 90}>
@@ -133,6 +148,8 @@ export function Why() {
 /* -------------------------------------------------------------- Final CTA */
 
 export function FinalCta() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <section id="demo" className="relative overflow-hidden py-28 md:py-36">
       <div aria-hidden className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
@@ -140,60 +157,80 @@ export function FinalCta() {
       <div className="container-rms relative text-center">
         <Reveal>
           <div className="font-mono text-[11px] tracking-[0.3em] text-primary uppercase">
-            See everything · Know everything · Control everything
+            See Your Infrastructure Differently
           </div>
         </Reveal>
         <Reveal delay={100}>
           <h2 className="mx-auto mt-7 max-w-4xl text-3xl leading-[1.06] font-semibold text-balance sm:text-5xl md:text-6xl">
-            Ready to see your entire infrastructure
-            <span className="text-gradient"> in one place?</span>
+            Ready to take control of your infrastructure?
           </h2>
         </Reveal>
         <Reveal delay={180}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Book a guided walkthrough of RMS360 with our solutions team and see live telemetry,
-            alerting, analytics and remote control on real infrastructure.
+            RMS360 turns infrastructure data into visibility, intelligence and action.
           </p>
         </Reveal>
         <Reveal delay={260}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <CtaPrimary href="#demo">
-              Request a Demo
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </CtaPrimary>
-            <CtaGhost href="#platform">Talk to our team</CtaGhost>
+            <CtaGhost onClick={() => setContactOpen(true)}>
+              Talk to our team
+            </CtaGhost>
           </div>
         </Reveal>
 
-        <Reveal delay={340}>
-          <div className="mx-auto mt-14 max-w-xl rounded-lg border border-border/60 bg-background/60 p-6 backdrop-blur-sm sm:p-8">
-            <h3 className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-              Service Enquiries
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Need RMS360 services or assistance?
-            </p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
-              <a
-                href="tel:+2348035106187"
-                className="group inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
-                aria-label="Call +234 803 510 6187"
+      </div>
+
+      {contactOpen ? (
+        <div
+          className="fixed inset-0 z-[60] grid place-items-center bg-black/70 p-4 backdrop-blur-sm"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setContactOpen(false);
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-dialog-title"
+            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-2xl sm:p-8"
+          >
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <h2 id="contact-dialog-title" className="font-display text-2xl font-semibold tracking-tight">
+                  Request a Demo
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Tell us about your infrastructure and monitoring requirements.
+                </p>
+              </div>
+              <button
+                type="button"
+                aria-label="Close contact form"
+                onClick={() => setContactOpen(false)}
+                className="grid size-9 shrink-0 place-items-center rounded-sm border border-border text-lg text-muted-foreground hover:border-primary/50 hover:text-foreground"
               >
-                <Phone className="size-4 text-primary transition-colors group-hover:text-foreground" />
-                <span className="numeric">+234 803 510 6187</span>
-              </a>
-              <a
-                href="mailto:shadebtechlimited@gmail.com"
-                className="group inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary break-words"
-                aria-label="Email shadebtechlimited@gmail.com"
-              >
-                <Mail className="size-4 shrink-0 text-primary transition-colors group-hover:text-foreground" />
-                shadebtechlimited@gmail.com
-              </a>
+                ×
+              </button>
+            </div>
+            <form className="mt-6 grid gap-3 sm:grid-cols-2" onSubmit={(event) => sendDemoRequestByEmail(event, () => setContactOpen(false))}>
+              <input required name="name" placeholder="Name" aria-label="Name" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <input required name="company" placeholder="Company" aria-label="Company" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <input required type="email" name="email" placeholder="Email" aria-label="Email" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <input name="phone" placeholder="Phone" aria-label="Phone" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <input name="industry" placeholder="Industry" aria-label="Industry" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <input name="sites" placeholder="Number of sites" aria-label="Number of sites" className="h-10 rounded-sm border border-border bg-background/60 px-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60" />
+              <textarea name="requirements" placeholder="Monitoring requirements" aria-label="Monitoring requirements" rows={3} className="resize-none rounded-sm border border-border bg-background/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 sm:col-span-2" />
+              <button type="submit" className="inline-flex h-10 items-center justify-center rounded-sm bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:brightness-110 sm:col-span-2">
+                Submit
+              </button>
+            </form>
+            <div className="mt-6 flex flex-col gap-3 border-t border-border pt-5 text-sm sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+              <a href="tel:+2348035106187" className="text-foreground hover:text-primary">+234 803 510 6187</a>
+              <a href="mailto:shadebtechlimited@gmail.com" className="break-words text-foreground hover:text-primary">shadebtechlimited@gmail.com</a>
             </div>
           </div>
-        </Reveal>
-      </div>
+        </div>
+      ) : null}
     </section>
   );
 }

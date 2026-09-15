@@ -115,20 +115,32 @@ export function CtaPrimary({
 export function CtaGhost({
   children,
   className,
-  href = "#platform",
+  href,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
   href?: string;
+  onClick?: () => void;
 }) {
+  const classes = cn(
+    ctaBase,
+    "border border-border bg-surface/40 text-foreground backdrop-blur hover:border-primary/50 hover:bg-surface-2/60",
+    className,
+  );
+
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={classes}>
+        {children}
+      </button>
+    );
+  }
+
   return (
     <a
-      href={href}
-      className={cn(
-        ctaBase,
-        "border border-border bg-surface/40 text-foreground backdrop-blur hover:border-primary/50 hover:bg-surface-2/60",
-        className,
-      )}
+      href={href ?? "#platform"}
+      className={classes}
     >
       {children}
     </a>

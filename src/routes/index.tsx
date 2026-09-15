@@ -16,6 +16,7 @@ import {
   RemoteControl,
   Hardware,
   HowItWorks,
+  ManagementModules,
 } from "@/components/rms/Sections";
 import {
   Industries,
@@ -27,7 +28,7 @@ import {
 
 const title = "RMS360 — Intelligent Remote Monitoring for Critical Infrastructure";
 const description =
-  "RMS360 unifies power, fuel, energy, environment, security, assets and CCTV monitoring across distributed sites — with GIS operations, AI analytics and authorized remote control.";
+  "RMS360 is an intelligent remote monitoring and infrastructure management platform that provides real-time visibility, alerts, analytics and control across distributed critical infrastructure.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +38,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "RMS360" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
   }),
   component: Index,
@@ -50,14 +54,14 @@ function Index() {
       <main>
         <Hero />
         <DashboardConsole />
-        <SitesInfrastructure />
-        <AlertsIncidentManagement />
-        <AiAnalytics />
-        <WhatIsRms />
         <Solutions />
         <Features />
+        <ManagementModules />
+        <SitesInfrastructure />
+        <AlertsIncidentManagement />
         <Alerts />
         <Gis />
+        <AiAnalytics />
         <Intelligence />
         <RemoteControl />
         <Hardware />
@@ -65,6 +69,7 @@ function Index() {
         <Industries />
         <Security />
         <Why />
+        <WhatIsRms />
         <FinalCta />
       </main>
       <Footer />

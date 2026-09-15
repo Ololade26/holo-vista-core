@@ -102,20 +102,20 @@ export function About() {
 const solutions = [
   {
     icon: Power,
-    title: "Power monitoring",
-    copy: "Mains, generator and rectifier state, voltage, current, load and outage detection in real time.",
+    title: "Power",
+    copy: "Monitor grid availability, generator status, voltage, current, battery systems, rectifiers and UPS infrastructure.",
     metric: "99.1% mains availability",
   },
   {
     icon: Fuel,
-    title: "Fuel management",
-    copy: "Tank levels, consumption profiles, refuel verification and theft or pilferage detection.",
+    title: "Fuel",
+    copy: "Track fuel levels, consumption patterns, refuelling activities and abnormal fuel behaviour.",
     metric: "41 low-fuel sites flagged",
   },
   {
     icon: Zap,
-    title: "Energy performance",
-    copy: "kWh per site, grid versus generator mix, efficiency benchmarking and cost attribution.",
+    title: "Energy",
+    copy: "Monitor energy generation, consumption, load behaviour and renewable energy systems.",
     metric: "grid 68% · gen 32%",
   },
   {
@@ -126,26 +126,26 @@ const solutions = [
   },
   {
     icon: DoorOpen,
-    title: "Security & access",
-    copy: "Door contacts, intrusion, motion and authorized access with a full audit trail.",
+    title: "Security",
+    copy: "Monitor doors, access events, intrusion sensors and security infrastructure.",
     metric: "16 events / 24h",
   },
   {
     icon: Server,
-    title: "Asset intelligence",
-    copy: "Asset registry, runtime hours, service history and condition-based maintenance triggers.",
+    title: "Assets",
+    copy: "Track the operational status and health of critical equipment across your sites.",
     metric: "8,412 assets tracked",
   },
   {
     icon: Camera,
-    title: "CCTV & visual",
-    copy: "Camera health, snapshot on alarm and visual verification alongside sensor telemetry.",
+    title: "CCTV",
+    copy: "Integrate cameras and video intelligence into your operational monitoring environment.",
     metric: "1,208 cameras online",
   },
   {
     icon: Gauge,
-    title: "Site health index",
-    copy: "A single composite score per site, combining every domain into one operational ranking.",
+    title: "One operational view",
+    copy: "Bring critical infrastructure data together in one intelligent platform for faster decisions.",
     metric: "94.4 average health",
   },
 ];
@@ -255,6 +255,59 @@ export function Features() {
   );
 }
 
+/* ------------------------------------------------------ Management modules */
+
+const managementModules = [
+  {
+    icon: Server,
+    eyebrow: "Asset management",
+    title: "Every asset. One platform.",
+    copy: "Create a digital record of every critical asset and view its history, status, alarms, maintenance information and operational performance from one place.",
+    items: "Generators · Batteries · Rectifiers · Solar systems · Fuel tanks · Controllers · Sensors · Cameras",
+  },
+  {
+    icon: LineChart,
+    eyebrow: "Reports & analytics",
+    title: "Turn data into decisions",
+    copy: "Transform raw operational data into meaningful business intelligence for operational and management teams.",
+    items: "Fuel · Energy · Generator · Power · Battery · Alarm · Site · Security · Maintenance · SLA",
+  },
+];
+
+export function ManagementModules() {
+  return (
+    <SectionShell id="management" className="border-y border-border bg-surface/20">
+      <div className="container-rms relative">
+        <SectionHeading
+          align="center"
+          eyebrow="Management dashboard"
+          title="Your command centre"
+          copy="Give management and operations teams a consolidated view of infrastructure performance."
+        />
+        <div className="mx-auto mt-14 grid max-w-5xl gap-4 md:grid-cols-2">
+          {managementModules.map((module, i) => (
+            <Reveal key={module.eyebrow} delay={i * 100}>
+              <article className="h-full rounded-md border border-border bg-background p-6">
+                <module.icon className="size-5 text-primary" />
+                <p className="mt-5 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+                  {module.eyebrow}
+                </p>
+                <h3 className="mt-2 font-display text-xl font-semibold tracking-tight">
+                  {module.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{module.copy}</p>
+                <p className="mt-5 border-t border-border pt-4 text-xs leading-relaxed text-primary/80">
+                  {module.items}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </SectionShell>
+  );
+}
+
 /* --------------------------------------------------------------- Platform */
 
 const alarms: { id: string; site: string; level: Severity; msg: string; age: string }[] = [
@@ -272,9 +325,9 @@ export function Alerts() {
       <div className="container-rms relative">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16">
           <SectionHeading
-            eyebrow="Alerts & incidents"
-            title="From signal to resolution, without the guesswork"
-            copy="Every alarm carries severity, site context and history. Escalation rules route it to the right team, and the incident record follows it through to closure."
+              eyebrow="Alerts & notifications"
+              title="Know when something needs attention"
+              copy="RMS360 continuously monitors your infrastructure and automatically generates alerts when predefined conditions occur."
           />
 
           <Reveal delay={120}>
@@ -328,9 +381,9 @@ export function Gis() {
             <GisMap className="h-72 w-full sm:h-96" showSweep />
           </Reveal>
           <SectionHeading
-            eyebrow="Geospatial intelligence"
-            title="See everything, everywhere, at once"
-            copy="Regions, clusters and individual sites on a live operational map. Status colouring makes deterioration visible at a glance, and one click drills into the full site profile."
+            eyebrow="GIS"
+            title="See your infrastructure on the map"
+            copy="Visualise your entire infrastructure geographically, from a national overview down to an individual site."
           />
         </div>
       </div>
@@ -368,9 +421,9 @@ export function Intelligence() {
     <SectionShell id="ai" className="border-y border-border bg-surface/20">
       <div className="container-rms relative">
         <SectionHeading
-          eyebrow="AI & analytics"
-          title="Monitoring that anticipates, not just reports"
-          copy="RMS360 learns the normal rhythm of every site, then tells you when reality drifts from it."
+          eyebrow="AI & intelligence"
+          title="Move from monitoring to prediction"
+          copy="RMS360 helps you understand what is happening, why it is happening and what may happen next."
         />
         <div className="mt-14 grid gap-4 sm:grid-cols-2">
           {intelligence.map((f, i) => (
@@ -409,8 +462,8 @@ export function RemoteControl() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
           <SectionHeading
             eyebrow="Remote control"
-            title="Take action without a site visit"
-            copy="Authorized operators execute controlled commands from the platform. Every action is permission-gated, approval-aware and permanently logged."
+            title="Don't just see. Take action."
+            copy="Where supported by deployed hardware and customer authorization, RMS360 provides authenticated, authorized and recorded remote control capabilities."
           />
           <Reveal delay={120}>
             <div className="panel rounded-lg p-5">
@@ -501,9 +554,9 @@ export function Hardware() {
 
           <div>
             <SectionHeading
-              eyebrow="Hardware & edge"
-              title="Industrial-grade edge, purpose-built for remote sites"
-              copy="The edge controller acquires, buffers and securely transmits telemetry — surviving power loss and intermittent connectivity without losing data."
+              eyebrow="Hardware"
+              title="Built for the field"
+              copy="RMS360 connects the physical world to your operational command centre through an intelligent edge monitoring architecture."
             />
             <dl className="mt-10 grid gap-px overflow-hidden rounded-md border border-border bg-border">
               {hardwareSpecs.map((s, i) => (
@@ -527,11 +580,12 @@ export function Hardware() {
 /* ------------------------------------------------------------ How it works */
 
 const steps = [
-  { icon: Thermometer, title: "Sensors", copy: "Power, fuel, energy, environment, security and asset sensors instrument the site." },
-  { icon: Cpu, title: "Edge controller", copy: "Signals are acquired, normalised, timestamped and buffered locally." },
-  { icon: Antenna, title: "Connectivity", copy: "Encrypted transport over LTE, Ethernet or satellite failover." },
-  { icon: Server, title: "Cloud", copy: "Scalable ingestion, time-series storage and stream processing." },
-  { icon: Gauge, title: "Platform", copy: "Dashboards, GIS, alerts, analytics, incidents and remote control." },
+  { icon: Thermometer, title: "Sense", copy: "Sensors, meters and equipment controllers collect operational data from the field." },
+  { icon: Antenna, title: "Connect", copy: "The RMS360 edge device securely communicates with the cloud platform through available networks." },
+  { icon: Cpu, title: "Process", copy: "RMS360 processes, stores and analyses incoming data." },
+  { icon: Gauge, title: "Visualise", copy: "Operators access real-time information through dashboards, GIS, reports and asset views." },
+  { icon: BellRing, title: "Alert", copy: "The platform identifies predefined abnormal conditions and generates alerts." },
+  { icon: Wrench, title: "Act", copy: "Teams respond, create tickets or execute authorised remote commands." },
 ];
 
 export function HowItWorks() {
@@ -541,11 +595,11 @@ export function HowItWorks() {
         <SectionHeading
           align="center"
           eyebrow="How it works"
-          title="Sensor to decision, in seconds"
+          title="From sensor to insight"
         />
         <div className="relative mt-16">
           <div aria-hidden className="hairline-x absolute top-6 right-0 left-0 hidden lg:block" />
-          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6 lg:gap-4">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.title} delay={i * 110}>
                 <div className="relative h-full">

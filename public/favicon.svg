@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <radialGradient id="lens" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#0b568e"/>
+      <stop offset=".42" stop-color="#0872c2"/>
+      <stop offset=".72" stop-color="#00518f"/>
+      <stop offset="1" stop-color="#032f5b"/>
+    </radialGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0c6c9f"/>
+      <stop offset="1" stop-color="#075080"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#frame)" d="M96 8 184 56v40l-20-11V68L96 32 28 68v17L8 96V56z"/>
+  <path fill="url(#frame)" d="m8 96 20 11v17l68 36 68-36v-17l20-11v40l-88 48L8 136z"/>
+  <path fill="#062d51" d="m28 68 68-36 68 36v17l-20-11-48-25-48 25-20 11z"/>
+  <path fill="#062d51" d="m28 124 68 36 68-36v-17l-20 11-48 25-48-25-20-11z"/>
+  <circle cx="96" cy="96" r="46" fill="#aeb5bb" stroke="#e5e8ea" stroke-width="3"/>
+  <circle cx="96" cy="96" r="38" fill="#56616b"/>
+  <circle cx="96" cy="96" r="32" fill="url(#lens)" stroke="#d8e0e6" stroke-width="3"/>
+  <circle cx="96" cy="96" r="17" fill="#021d35"/>
+  <circle cx="96" cy="96" r="11" fill="#063e69"/>
+  <circle cx="88" cy="87" r="4" fill="#57a6d5" opacity=".7"/>
+</svg>

@@ -122,9 +122,9 @@ export function Hero() {
 
             <Reveal delay={200}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                RMS360 is an intelligent remote monitoring and infrastructure management platform
-                that gives operations teams a single real-time view of distributed critical
-                infrastructure — from site health and energy to security, assets and alarms.
+                The intelligence layer for distributed critical infrastructure. RMS360 brings
+                power, energy, fuel, security and asset health into one live view, so teams can
+                protect uptime and act before small signals become costly incidents.
               </p>
             </Reveal>
 
@@ -138,6 +138,13 @@ export function Hero() {
                   Explore RMS360
                   <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </CtaGhost>
+              </div>
+            </Reveal>
+
+            <Reveal delay={360}>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-border/70 pt-4 font-mono text-[10px] tracking-[0.12em] text-muted-foreground uppercase">
+                <span>One view across every site</span>
+                <span>Built for uptime-critical teams</span>
               </div>
             </Reveal>
           </div>
